@@ -39,7 +39,9 @@ public class UserServiceProxyFactory implements InvocationHandler {
      */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        method.invoke(us,args);
-        return null;
+        System.out.println("打开事务");
+        Object invoke = method.invoke(us,args);
+        System.out.println("关闭事务");
+        return invoke;
     }
 }
